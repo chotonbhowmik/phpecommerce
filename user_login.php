@@ -2,6 +2,8 @@
 <?php
 
 include('admin/class/db.php');
+ob_start();
+session_start();
 
 ?>
 <?php
@@ -67,6 +69,34 @@ include('includes/bootomheader.php');
                                     <a style="padding-right:40px;" href="password_recover.php" class="link-to-help">Forgot your password</a>
                                 
                             </form>
+
+                         <?php
+
+              if (isset($_POST['user_login_btn'])) {
+
+              $user_email       = $_POST['user_email'];
+             $user_password    = md5($_POST['user_password']);
+
+              
+
+               $query = "SELECT * FROM frontuser WHERE user_email ='$user_email' AND user_password = '$user_password'";
+              $userlogin = mysqli_query($db, $query);
+              
+             $admininfo = mysqli_fetch_assoc($userlogin);
+             if ($admininfo ) {
+               header("Location:user_profile.php");
+               $_SESSION['id'] = $admininfo['user_id '];
+               $_SESSION['email'] = $admininfo['user_email'];
+               $_SESSION['pass'] = $admininfo['user_password '];
+               $_SESSION['name'] = $admininfo['user_name'];
+             }
+             else{
+              echo "username or password invalid";
+             }
+}
+
+
+                    ?>
                         </div>
                     </div>
 

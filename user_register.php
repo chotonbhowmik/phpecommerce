@@ -75,7 +75,7 @@ include('includes/bootomheader.php');
 
                                 <p class="form-row">
                                     <label for="user_password">Password:<span class="requite">*</span></label>
-                                    <input type="password" id="fid-name" name="user_password " value="" class="txt-input">
+                                    <input type="password" id="fid-name" name="user_password" value="" class="txt-input">
                                 </p>
                                  <p class="form-row">
                                     <label for="user_phone">Phone Number:<span class="requite">*</span></label>
